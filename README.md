@@ -93,3 +93,20 @@ raxmlHPC-PTHREADS -m PROTCATAUTO -s alignment.fasta -x 12345 -p 12345 -# 1000 -k
 2. Nucleotides
 ```
 raxmlHPC-PTHREADS -m GTRCAT -s alignment.fasta -x 12345 -p 12345 -# 1000 -k -T 2 -f a -n prot_out
+```
+
+## Output files
+
+Output Folder
+
+  1. species
+  
+      * Individual species folders containing FASTA file of genes and concatenation of genes
+
+  2. alignment
+  
+      * Final FASTA concatenation of all species and alignment FASTA file(s)
+
+  3. phylogeny
+  
+      * Newicks tree file(s) and other associated files
