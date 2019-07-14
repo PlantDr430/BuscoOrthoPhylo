@@ -61,11 +61,13 @@ Parent_directory
 ```
 For Orthofinder use: 
 
+Parent_directory = Results_XXX output folder from Orthofinder
+
 (Note: Orthofinder will only use 'prot' as Orthofinder does not output any nucleotide sequences)
 
 (Note: Currently only compatible with Orthofinder Version 2.2 or lower. Will add 2.3 and above soon)
 
-Parent_directory = Results_XXX output folder from Orthofinder
+
 
 ## Default commands
 Running the script with all default settings will run these commands depending on which aligner and ML construction program you use.
