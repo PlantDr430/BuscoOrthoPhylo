@@ -59,7 +59,9 @@ Parent_directory
             |
             +--run_xxx
 ```
-For Orthofinder use: (Note: Orthofinder will only use 'prot' as Orthofinder does not output any nucleotide sequences)
+For Orthofinder use: 
+(Note: Orthofinder will only use 'prot' as Orthofinder does not output any nucleotide sequences)
+(Note: Currently only compatible with Orthofinder Version 2.2 or lower. Will add 2.3 and above soon)
 
 Parent_directory = Results_XXX output folder from Orthofinder
 
