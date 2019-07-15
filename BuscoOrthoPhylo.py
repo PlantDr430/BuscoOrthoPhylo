@@ -132,8 +132,8 @@ parser.add_argument(
     '-ma_a',
     '--mafft_args',
     nargs='+',
-    help = "Additional flags, separated by commas, within quotes, no spaces after commas, "\
-    "to be used in MAFFT alignment [ex. 'localpair,maxiterate 0-1000']",
+    help = "Flags, separated by commas, within quotes, no spaces after commas, "\
+    "used in MAFFT run [ex. 'localpair,maxiterate 0-1000']",
     metavar=''
 )
 parser.add_argument(
@@ -170,24 +170,24 @@ parser.add_argument(
     '-ft_a',
     '--fasttree_args',
     nargs='+',
-    help = "Additional flags, separated by commas, within quotes, no spaces after commas,"\
-    "to be used in fasttree run [ex. 'slow,bionj,spr 4']",
+    help = "Flags, separated by commas, within quotes, no spaces after commas,"\
+    "used in fasttree run [ex. 'slow,bionj,spr 4']",
     metavar=''
 )
 parser.add_argument(
     '-rx_a',
     '--raxml_args',
     nargs='+',
-    help = "Additional flags, separated by commas, within quotes, no spaces after commas,"\
-    "to be used in raxml run [ex. 'k,f a,t file.nwk']",
+    help = "Flags, separated by commas, within quotes, no spaces after commas,"\
+    "used in raxml run [ex. 'k,f a,t file.nwk']",
     metavar=''
 )
 parser.add_argument(
     '-rx_og',
     '--raxml_outgroup',
     nargs='+',
-    help = "Names of outgroup species to use in raxml run [ex. 'rat,mouse,fly,human']. "\
-    "Names must correlate to headers in alignment file",
+    help = "Names of outgroup species to use in raxml run [ex. 'rat,mouse,fly']. "\
+    "Names must correlate to headers in alignment",
     metavar=''
 )
 parser.add_argument(
@@ -410,7 +410,7 @@ if not args.resume: # If resume is called, this will skip concatenation step.
                     sys.exit(1)
                 for x in given_list:
                     common_dict[x] = []
-                print('Using {} provided BUSCOs shared in all {}species for downstream'\
+                print('Using {} provided BUSCOs shared in all {}species for downstream '\
                 'analysis'.format(len(given_list),len(buscos.keys())))
         else:
             for x in common_buscos:
@@ -562,8 +562,7 @@ if not args.resume: # If resume is called, this will skip concatenation step.
             version = 2.2
 
     # Get list of common ortholog names
-        
-        print('Creating dictionary of single copy orthologs')
+
         if version == 2.3:
             single_seqs = os.path.abspath(os.path.join(input_dir, 'Single_Copy_Orthologue_Sequences'))
             for path, dirs, files in os.walk(single_seqs):
@@ -604,6 +603,7 @@ if not args.resume: # If resume is called, this will skip concatenation step.
                 common_ortho_dict[x] = []
             print('Using {} Orthologs shared in all species for downstream analysis'.format(len(common_ortho)))
 
+        print('Creating dictionary of single copy orthologs')
         # if version == 2.3:
              # do nothing for now
         if version == 2.2:
