@@ -366,7 +366,9 @@ if not args.resume: # If resume is called, this will skip concatenation step.
                     fpath = os.path.join(path, file)
                     name, extension = file.split('.')
                     buscos[species_name] = buscos.get(species_name, []) + [name]
-
+            if len(buscos[species_name]) == 0:
+                print('ERROR: We could not find any BUSCOs for {}. We are exiting'.format(species_name))
+                sys.exit()
     # Finding common BUSCOs
 
         print('Finding common BUSCOs between all species')
@@ -385,7 +387,6 @@ if not args.resume: # If resume is called, this will skip concatenation step.
 
         for keys, values in buscos.items():
             common_buscos = set(sorted(common_buscos)) & set(sorted(values))
-        
 
     # Turn common BUSOCs into dictionary for faster searching and get subsample if applied
 
@@ -415,7 +416,7 @@ if not args.resume: # If resume is called, this will skip concatenation step.
         else:
             for x in common_buscos:
                 common_dict[x] = []
-            print('Using {} BUSCOs shared in all {} species for downstream'\
+            print('Using {} BUSCOs shared in all {} species for downstream '\
             'analysis'.format(len(common_buscos),len(buscos.keys())))
 
     # Creating FASTA files for each species
