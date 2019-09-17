@@ -361,7 +361,12 @@ if not args.resume: # If resume is called, this will skip concatenation step.
             species_name = os.path.basename(i)
             buscos[species_name] = []
             busco_out = busco_output(i)
-            for path, directories, files in os.walk(os.path.join(busco_out, 'single_copy_busco_sequences')):
+            single_copy_dir = os.path.abspath(os.path.join(busco_out, 'single_copy_busco_sequences'))
+            if not os.path.isdir(single_copy_dir):
+                print('ERROR: Could not find single_copy_busco_sequences/ directory in {} for ',\
+                'species {}. We are exiting'.format(busco_out, species_name))
+                sys.exit()
+            for path, directories, files in os.walk(single_copy_dir):
                 for file in files:
                     fpath = os.path.join(path, file)
                     name, extension = file.split('.')
