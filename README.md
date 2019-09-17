@@ -42,7 +42,7 @@ optional arguments:
 ```
 
 
-For BUSCO use please set up your -d/--directory input like so:
+For BUSCO use please set up your Parent_directory (-d/--directory input) like so:
 ```
 Parent_directory
     |
