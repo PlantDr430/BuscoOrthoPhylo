@@ -248,15 +248,21 @@ def busco_output(search_dir):
     try:
         if not args.key:
             busco_folder_count = 0
+            if len(os.listdir(search_dir)) == 0:
+                print('ERROR: {} is empty and does not contain any BUSCO output results.'.format(search_dir))
+                sys.exit(1)
             for dir in os.listdir(search_dir):
                 if dir.startswith('run_'):
                     busco_folder_count += 1
                     busco_out = os.path.abspath(os.path.join(search_dir, dir))
+                    if not os.path.isdir(busco_out):
+                        print("ERROR: Could not find BUSCO results folder starting with 'run_'",\
+                        "in {}".format(search_dir))
                     if busco_folder_count > 1:
                         raise 
     except:
-        print('ERROR: Multiple BUSCO output folders found per species folder, please',\
-        'into a keyword with -k or --key to help select which BUSCO output folder to use')
+        print('ERROR: Multiple BUSCO output folders found per species folder, please ',\
+        'into a keyword with -k or --key to help select which BUSCO output folder to use.')
         sys.exit(1)
     else:
         try:
